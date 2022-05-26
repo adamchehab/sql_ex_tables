@@ -5,8 +5,9 @@ Fills your tables with data from sql-ex.
 
 ## How to use:
 1. Create database with one of the names from table below(`db_name`):
-3.  In `script.py` file write your db_name to `DATABASE` variable.
-4.  Run script.
+2. Create tables for database. (Name them as in sql-ex)
+3. Write your MySql config (user, password, ...) to `config.py` file. Write your db_name to `DATABASE` variable.
+5.  Run script.
 
 ## DB_names table
 | db_name  | sql-ex db   |
