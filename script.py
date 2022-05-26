@@ -21,13 +21,14 @@ try:
         
         tables = os.listdir(os.path.join(repo_root(), f'tables_data\\{DATABASE}'))
         
+        print(f"Writing to {DATABASE}...")
+        
         for table in tables:
             
             table = table.replace('.csv','')
             headers = get_table_headers(connection, table)
             data = get_data_from_csv(table, DATABASE)
             
-            print(f"Writing to {DATABASE}...")
             insert_into_table(connection, table, headers, data)
             print(f"✔️ - Done writing to {table}")
 
