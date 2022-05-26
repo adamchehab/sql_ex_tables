@@ -1,28 +1,17 @@
 import os
 import pymysql
 
-from utils import repo_root
-from utils import get_table_headers
-from utils import get_data_from_csv
-from utils import insert_into_table
+from utils import repo_root, get_table_headers, get_data_from_csv, insert_into_table
 
-
-DATABASE = "airlines"
-
-# OPTIONS:
-#   pc_company - Компьютерная фирма
-#   recycling_company - Фирма вторсырья
-#   ships - Корабли
-#   airlines - Аэрофлот
-#   paint - Окраска
+from config import DATABASE, HOST, PORT, USER, PASSWORD
 
 
 try:
     connection = pymysql.connect(
-        host="127.0.0.1",
-        port=3306,
-        user="root",
-        password="1212",
+        host=HOST,
+        port=PORT,
+        user=USER,
+        password=PASSWORD,
         database=DATABASE,
         cursorclass=pymysql.cursors.DictCursor
     )
