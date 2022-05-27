@@ -19,7 +19,8 @@ try:
     
     try:
         
-        tables = os.listdir(os.path.join(repo_root(), f'tables_data\\{DATABASE}'))
+        # tables = os.listdir(os.path.join(repo_root(), f'tables_data\\{DATABASE}'))
+        tables = ['company', 'passenger', 'trip', 'pass_in_trip']
         
         print(f"Writing to {DATABASE}...")
         

@@ -1,4 +1,4 @@
--- # ? Ошибка в ТЗ: data в pass_in_trip не ключ тк она не унискальна
+-- # ? Ошибка в ТЗ: data в pass_in_trip не ключ тк она не уникальна
 -- # ? Почему 3 ключа?
 
 -- Создаём базы данных
@@ -69,8 +69,18 @@ ALTER TABLE pass_in_trip ADD FOREIGN KEY (ID_psg) REFERENCES passenger(ID_psg);
 
 
 
+-- Удалить колонку как
+-- Удалить связи между таблицами
+
 
 
 -- notes
 SELECT * FROM company;
 SELECT * FROM passenger;
+SELECT * FROM pass_in_trip;
+SELECT * FROM trip;
+
+
+
+
+ 
