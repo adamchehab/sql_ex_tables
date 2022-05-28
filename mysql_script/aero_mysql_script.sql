@@ -134,9 +134,6 @@ insert into Passenger values(29,'Pierce Brosnan      ');
 insert into Passenger values(30,'Sean Connery        ');
 insert into Passenger values(31,'Bruce Willis        ');
 insert into Passenger values(37,'Mullah Omar         ');
-
-
-
                                                                                                                                                                                                                                                                  
 /*----Trip------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */
 insert into Trip values(1100,4,'Boeing    ','Rostov                   ','Paris                    ','1900-01-01 14:30:00','1900-01-01 17:50:00');
