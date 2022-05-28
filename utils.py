@@ -39,3 +39,8 @@ def get_data_from_csv(filename, database):
     with open(os.path.join(repo_root(), f'tables_data\\{database}\\{filename}.csv'), newline='') as f:
         reader = csv.reader(f)
         return list(reader)
+    
+
+def sql_query(connection, query):
+    with connection.cursor() as cursor:
+        cursor.execute(query)
