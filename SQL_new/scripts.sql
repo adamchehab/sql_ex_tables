@@ -138,28 +138,37 @@ insert into pass_in_trip values(7771, '2005-11-14 00:00:00',14,'4d       ');
 insert into pass_in_trip values(7771, '2005-11-16 00:00:00',14,'5d       ');
 insert into pass_in_trip values(7772, '2005-11-29 00:00:00',14,'1c       ');
 
+DESC trip;
+
+SELECT * FROM trip;
+
 /*markdown
-копии - like - foregin key отдельно
-каскадное удаление
-
-Сначала сказала сделать копии полные всех таблиц из моей схемы, добавить каскадное удаление в фк и показать что оно работает
-Потом сказала создать новый столбец, перенести туда фк, значения из старого, старый столбец забить нулями и удалить потом
-
-1 транзакция которая копирует таблицы
-Все ограничения целостности
-2Показать каскадное удаление (меньше всего продукции)
-3с внешним ключом копия (по условию цены)
-,На исходной убрать ключи
-На скопированной копия столбца с внешним ключом, оригинальный обнуляю ИНН
-
-
-- создал табл
-- создал новые ключи
-- ...
-
-
-![alt text](https://sun9-32.userapi.com/s/v1/ig2/XnjkXP-GS5TkyY4Xe73qKHXoplKcDF1GuhMOOru7pgN5cQe1n_fM3PqjedZw6E1sGyDvl77V_pLk-8U8Hz5N2us3.jpg?size=790x486&quality=96&type=album)
+### Скрипт (каскадное удаление, новая колонка)
 */
 
+-- Добавляем колонку
+ALTER TABLE trip ADD id_comp1 INT NOT NULL;
+-- Копируем старую колонку в новую
+UPDATE trip SET id_comp1=id_comp;
 
+-- Говорим что в стврой  колонке может быть NULL
+ALTER TABLE trip MODIFY id_comp INT;
+-- Зануляем старую колонку
+UPDATE trip SET id_comp=NULL;
+
+-- Дропаем старый ключ
+ALTER TABLE trip DROP CONSTRAINT FK_id_comp;
+-- Дропаем старую колонку
+ALTER TABLE trip DROP id_comp; 
+
+-- Добавляем ключ к новой колонке
+ALTER TABLE trip ADD CONSTRAINT FK_id_comp FOREIGN KEY (id_comp1) REFERENCES company(id_comp) ON DELETE CASCADE;
+-- Переименовываем новую колонку в старую
+ALTER TABLE trip RENAME COLUMN id_comp1 TO id_comp;
+
+/*markdown
+- сделать копии полные всех таблиц (LIKE)
+- добавить каскадное удаление в фк и показать что оно работает
+- создать новый столбец, перенести туда фк, значения из старого, старый столбец забить нулями и удалить потом
+- Все ограничения целостности (транзакции)
 */
