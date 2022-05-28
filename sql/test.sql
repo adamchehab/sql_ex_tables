@@ -73,10 +73,19 @@ ALTER TABLE trip ADD CONSTRAINT FK_id_comp FOREIGN KEY(id_comp) REFERENCES compa
 ALTER TABLE pass_in_trip ADD CONSTRAINT FK_trip_no FOREIGN KEY (trip_no) REFERENCES trip(trip_no);
 ALTER TABLE pass_in_trip ADD CONSTRAINT FK_ID_psg FOREIGN KEY (ID_psg) REFERENCES passenger (ID_psg);
 
+
+
+
 /*markdown
 ### Remove relations
 */
 
+
 ALTER TABLE trip DROP CONSTRAINT FK_id_comp;
 ALTER TABLE pass_in_trip DROP CONSTRAINT FK_trip_no;
 ALTER TABLE pass_in_trip DROP CONSTRAINT FK_ID_psg;
+
+DROP TABLE IF EXISTS trip, company, passenger, pass_in_trip;
+
+USE airlines;
+SELECT * FROM company;

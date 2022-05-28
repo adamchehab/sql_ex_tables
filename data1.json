@@ -1,9 +1,0 @@
-{
-    "airlines":
-       {
-          "com99pany":"DATA",
-          "passenger": "DATA",
-          "trip": "DATA",
-          "pass_in_trip": "DATA"
-       }
- }

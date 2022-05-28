@@ -1,5 +1,6 @@
 import os
 import csv
+import json
 
 
 def repo_root():
@@ -35,8 +36,8 @@ def insert_into_table(connection, table, headers, data):
             connection.commit()
 
 
-def get_data_from_csv(filename, database):
-    with open(os.path.join(repo_root(), f'tables_data\\{database}\\{filename}.csv'), newline='') as f:
+def get_data_from_csv(filename, db):
+    with open(os.path.join(repo_root(), f'tables_data\\{db}\\{filename}.csv'), newline='') as f:
         reader = csv.reader(f)
         return list(reader)
     
@@ -44,3 +45,9 @@ def get_data_from_csv(filename, database):
 def sql_query(connection, query):
     with connection.cursor() as cursor:
         cursor.execute(query)
+        
+        
+def get_script_for_table(db, table, f):
+    with open(os.path.join(repo_root(), f'{f}.json')) as json_file:
+        data = json.load(json_file)
+    return data[db][table]
